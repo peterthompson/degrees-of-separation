@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MovieList from "./movie-list";
-
+import { Form, Button, Box, Heading, Text } from "grommet";
+import { Search } from "grommet-icons";
 import Graph from "../utils/graph";
 
 class App extends React.Component {
@@ -81,21 +82,47 @@ class App extends React.Component {
     }
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <Box
+        border={{ color: "neutral-1", size: "xlarge" }}
+        pad="medium"
+        animation="fadeIn"
+      >
+        <Heading margin={{ top: "none", bottom: "large" }} size="small">
+          Degrees of Separation
+        </Heading>
+        <Form onSubmit={this.handleSubmit}>
           <MovieList label="Source" handleChange={this.changeSource} />
           <MovieList label="Target" handleChange={this.changeTarget} />
-          <input type="submit" value="Search" />
-        </form>
-        {this.state.error && <p className="error">{this.state.error}</p>}
+          <Button
+            type="submit"
+            primary
+            label="Search"
+            margin={{ top: "medium" }}
+            icon={<Search />}
+            reverse={true}
+            padding="large"
+            color="neutral-1"
+          />
+        </Form>
+        {this.state.error && (
+          <Text
+            color="status-error"
+            className="error"
+            margin={{ top: "medium" }}
+          >
+            {this.state.error}
+          </Text>
+        )}
         {this.state.result && (
           <ul className="result">
             {this.state.result.map(item => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <Text size="medium">{item}</Text>
+              </li>
             ))}
           </ul>
         )}
-      </div>
+      </Box>
     );
   }
 }

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import Downshift from "downshift";
 import { initialState } from "../../redux";
 import ConnectedComponent from "../app";
+import { Form, Text } from "grommet";
 
 const App = ConnectedComponent.WrappedComponent;
 
@@ -65,10 +66,13 @@ describe("app", () => {
         <ConnectedComponent />
       </Provider>
     );
-    wrapper.find("form").simulate("submit");
-    expect(wrapper.find(".error").text()).toEqual(
-      "Please select a source and target movie"
-    );
+    wrapper.find(Form).simulate("submit");
+    expect(
+      wrapper
+        .find(Text)
+        .at(2)
+        .text()
+    ).toEqual("Please select a source and target movie");
   });
 
   it("should render an error message when no path is found", () => {

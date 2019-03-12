@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Downshift from "downshift";
 import { connect } from "react-redux";
 import { FixedSizeList as List } from "react-window";
+import { TextInput, FormField, Text } from "grommet";
 
 import { movieTitlesSelector } from "../selectors";
 class MovieList extends React.Component {
@@ -24,8 +25,9 @@ class MovieList extends React.Component {
           isOpen
         }) => (
           <div>
-            <label {...getLabelProps()}>{this.props.label}: </label>
-            <input {...getInputProps()} />
+            <FormField {...getLabelProps()} label={this.props.label}>
+              <TextInput {...getInputProps()} />
+            </FormField>
             <ul {...getMenuProps()}>
               {isOpen
                 ? (() => {
@@ -45,9 +47,9 @@ class MovieList extends React.Component {
                           return (
                             <li
                               {...getItemProps({ key: item, item })}
-                              style={style}
+                              style={{ ...style, cursor: "pointer" }}
                             >
-                              {item}
+                              <Text size="small">{item}</Text>
                             </li>
                           );
                         }}

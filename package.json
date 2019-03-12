@@ -54,6 +54,9 @@
   "dependencies": {
     "cross-fetch": "3.0.1",
     "downshift": "3.2.7",
+    "grommet": "2.5.5",
+    "grommet-icons": "4.2.0",
+    "polished": "3.0.3",
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "react-redux": "6.0.1",
@@ -61,6 +64,7 @@
     "redux": "4.0.1",
     "redux-devtools-extension": "2.13.8",
     "redux-thunk": "2.3.0",
-    "reselect": "4.0.0"
+    "reselect": "4.0.0",
+    "styled-components": "4.1.3"
   }
 }
