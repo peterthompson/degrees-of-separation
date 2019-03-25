@@ -71,7 +71,7 @@ describe("app", () => {
     );
   });
 
-  it("should render an error message when no path is found", () => {
+  it("should render the path when found", () => {
     const store = mockStore({ isFetching: false, movies: moviesJson });
     const wrapper = mount(
       <Provider store={store}>
